@@ -83,12 +83,9 @@ function SignupForm() {
 
     try {
       const supabase = createClient();
-      const { error } = await supabase.auth.signUp({
+      const { error, data } = await supabase.auth.signUp({
         email,
         password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
       });
 
       if (error) {
@@ -96,8 +93,16 @@ function SignupForm() {
         return;
       }
 
-      toast.success("Check your email to confirm your account");
-      router.push(`/auth/login${redirectTo !== "/" ? `?redirect=${redirectTo}` : ""}`);
+      // If user is created and session exists, they're logged in
+      if (data.user && data.session) {
+        toast.success("Account created successfully!");
+        router.push(redirectTo);
+        router.refresh();
+      } else {
+        // Fallback if email confirmation is still enabled
+        toast.success("Check your email to confirm your account");
+        router.push(`/auth/login${redirectTo !== "/" ? `?redirect=${redirectTo}` : ""}`);
+      }
     } catch {
       toast.error("Something went wrong");
     } finally {
@@ -164,7 +169,6 @@ function SignupForm() {
             <Input
               id="password"
               type="password"
-              placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -176,7 +180,6 @@ function SignupForm() {
             <Input
               id="confirmPassword"
               type="password"
-              placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
@@ -184,7 +187,7 @@ function SignupForm() {
             />
           </div>
         </CardContent>
-        <CardFooter className="flex-col gap-4">
+        <CardFooter className="flex-col gap-4 pt-4">
           <Button type="submit" className="w-full" disabled={isLoading || isGoogleLoading}>
             {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
             Create account

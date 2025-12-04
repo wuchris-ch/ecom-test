@@ -150,7 +150,6 @@ function LoginForm() {
             <Input
               id="password"
               type="password"
-              placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -158,7 +157,7 @@ function LoginForm() {
             />
           </div>
         </CardContent>
-        <CardFooter className="flex-col gap-4">
+        <CardFooter className="flex-col gap-4 pt-4">
           <Button type="submit" className="w-full" disabled={isLoading || isGoogleLoading}>
             {isLoading && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
             Sign in
