@@ -41,7 +41,7 @@ export default async function HomePage() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/products?category=digital">
+                <Link href="/products?digital=true">
                   Digital Products
                 </Link>
               </Button>
