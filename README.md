@@ -50,7 +50,6 @@ npm run dev
 - [ ] **Discount codes** — Stripe Coupons integration
 
 ### Polish
-- [ ] **Product images** — Add sample product photos
 - [ ] **UI refresh** — Homepage hero, product cards, mobile nav
 - [ ] **SEO** — Meta tags, Open Graph, structured data
 - [ ] **Analytics** — Conversion tracking, Stripe Revenue reporting

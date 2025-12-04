@@ -10,10 +10,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/components/providers/cart-provider";
 import { formatPrice, getCartTotal } from "@/lib/cart";
+import { CheckoutButton } from "@/components/checkout-button";
 
 export function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity } = useCart();
@@ -130,9 +131,7 @@ export function CartDrawer() {
                 <Button variant="outline" className="w-full" onClick={closeCart}>
                   Continue Shopping
                 </Button>
-                <Button asChild className="w-full" onClick={closeCart}>
-                  <Link href="/cart">View Cart</Link>
-                </Button>
+                <CheckoutButton />
               </div>
             </div>
           </>

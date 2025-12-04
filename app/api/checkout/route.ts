@@ -34,18 +34,29 @@ export async function POST(request: NextRequest) {
     const hasPhysicalItems = items.some((item) => !item.is_digital);
 
     // Build Stripe line items
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
     const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map(
-      (item) => ({
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: item.name,
-            ...(item.image_url && { images: [item.image_url] }),
+      (item) => {
+        // Stripe requires full absolute URLs for images
+        let imageUrl: string | undefined;
+        if (item.image_url) {
+          imageUrl = item.image_url.startsWith("http")
+            ? item.image_url
+            : `${baseUrl}${item.image_url}`;
+        }
+
+        return {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: item.name,
+              ...(imageUrl && { images: [imageUrl] }),
+            },
+            unit_amount: item.price_cents,
           },
-          unit_amount: item.price_cents,
-        },
-        quantity: item.quantity,
-      })
+          quantity: item.quantity,
+        };
+      }
     );
 
     // Build session params
