@@ -45,7 +45,7 @@ npm run dev
 
 ### Features
 - [ ] **Email notifications** — Order confirmation, shipping updates, download links (Resend, Postmark)
-- [ ] **Admin dashboard** — Product management, order fulfillment (currently via Supabase UI)
+- [ ] **Admin dashboard** — Product management, order fulfillment (currently via Supabase UI manually running queries but eventually should have a dashboard with UI to make changes to products, upload images, etc)
 - [ ] **Search & filtering** — Product search, category filters, price range
 - [ ] **Discount codes** — Stripe Coupons integration
 
