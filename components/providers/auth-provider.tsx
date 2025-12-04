@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 import type { User, Session } from "@supabase/supabase-js";
 
 interface AuthContextValue {
@@ -49,6 +50,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
+    toast.success("You've been signed out");
   };
 
   return (
