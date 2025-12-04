@@ -36,24 +36,23 @@ npm run dev
 - Secure digital download links
 - Guest checkout
 
-## TODO: Production Readiness
+## TODO: Roadmap to Professional
 
-### Payments & Fulfillment
-- [ ] **Real shipping integration** — Currently using Stripe's shipping options. Need carrier APIs (EasyPost, Shippo) for live rates and label generation
-- [ ] **Tax calculation** — Add Stripe Tax or TaxJar for automated sales tax
-- [ ] **Inventory sync** — Stock decrements on purchase, low stock alerts
+### Fundamentals (Critical for Launch)
+- [ ] **Admin Dashboard** — Product management (CRUD), order fulfillment status, customer view
+- [ ] **Search & Discovery** — Search bar, sorting (price/date), advanced filtering
+- [ ] **Legal & Trust** — Terms of Service, Privacy Policy, Return Policy pages (required for payments)
+- [ ] **User Profile** — Edit profile details, change password, manage saved addresses
+- [ ] **Transactional Emails** — "Order Confirmed" and "Shipped" emails (Resend/Postmark)
+- [ ] **Inventory Management** — Real-time stock checks, low stock alerts
 
-### Features
-- [ ] **Email notifications** — Order confirmation, shipping updates, download links (Resend, Postmark)
-- [ ] **Admin dashboard** — Product management, order fulfillment (currently via Supabase UI manually running queries but eventually should have a dashboard with UI to make changes to products, upload images, etc)
-- [ ] **Search & filtering** — Product search, category filters, price range
-- [ ] **Discount codes** — Stripe Coupons integration
-
-### Polish
-- [ ] **UI refresh** — Homepage hero, product cards, mobile nav
-- [ ] **SEO** — Meta tags, Open Graph, structured data
-- [ ] **Analytics** — Conversion tracking, Stripe Revenue reporting
-- [ ] **Error handling** — Better user feedback on failures
+### Polish (Growth & UX)
+- [ ] **Reviews & Ratings** — Customer feedback and social proof
+- [ ] **Wishlist** — Save items for later
+- [ ] **Analytics** — Google Analytics/PostHog, conversion tracking
+- [ ] **SEO** — Open Graph tags, structured data (JSON-LD) for Google Shopping
+- [ ] **Newsletter** — Email capture for marketing
+- [ ] **UI Refinements** — Better empty states, loading skeletons, mobile nav polish
 
 ## Stripe Test Cards
 
