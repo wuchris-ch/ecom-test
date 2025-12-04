@@ -30,8 +30,8 @@ npm run dev
 
 - Product catalog (physical + digital)
 - Shopping cart with localStorage persistence
-- Stripe Checkout integration
-- User authentication (signup/login)
+- **Stripe Payments** (Complete integration)
+- **User Authentication** (Google OAuth + Email/Password)
 - Order history
 - Secure digital download links
 - Guest checkout
