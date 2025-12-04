@@ -8,7 +8,6 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetFooter,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -23,7 +22,7 @@ export function CartDrawer() {
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && closeCart()}>
       <SheetContent className="flex flex-col w-full sm:max-w-lg">
-        <SheetHeader>
+        <SheetHeader className="px-6">
           <SheetTitle className="flex items-center gap-2">
             <ShoppingBag className="h-5 w-5" />
             Shopping Cart
@@ -34,7 +33,7 @@ export function CartDrawer() {
         </SheetHeader>
 
         {items.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center text-center py-12">
+          <div className="flex-1 flex flex-col items-center justify-center text-center px-6 py-12">
             <ShoppingBag className="h-16 w-16 text-muted-foreground mb-4" />
             <p className="text-lg font-medium">Your cart is empty</p>
             <p className="text-sm text-muted-foreground mt-1">
@@ -46,7 +45,7 @@ export function CartDrawer() {
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto py-4">
+            <div className="flex-1 overflow-y-auto px-6 py-4">
               <div className="space-y-4">
                 {items.map((item) => (
                   <div key={item.product.id} className="flex gap-4">
@@ -117,7 +116,7 @@ export function CartDrawer() {
               </div>
             </div>
 
-            <div className="border-t pt-4">
+            <div className="border-t px-6 pt-4 pb-6">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-base font-medium">Subtotal</span>
                 <span className="text-lg font-semibold">
@@ -127,14 +126,14 @@ export function CartDrawer() {
               <p className="text-xs text-muted-foreground mb-4">
                 Shipping calculated at checkout
               </p>
-              <SheetFooter className="gap-2 sm:gap-2">
-                <Button variant="outline" className="flex-1" onClick={closeCart}>
+              <div className="flex flex-col gap-2">
+                <Button variant="outline" className="w-full" onClick={closeCart}>
                   Continue Shopping
                 </Button>
-                <Button asChild className="flex-1" onClick={closeCart}>
+                <Button asChild className="w-full" onClick={closeCart}>
                   <Link href="/cart">View Cart</Link>
                 </Button>
-              </SheetFooter>
+              </div>
             </div>
           </>
         )}
