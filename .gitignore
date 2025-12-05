@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 setup.md
+PAYMENTS_HANDOFF.md
 
 # debug
 npm-debug.log*

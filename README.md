@@ -44,7 +44,7 @@ npm run dev
 - [ ] **Legal & Trust** — Terms of Service, Privacy Policy, Return Policy pages (required for payments)
 - [ ] **User Profile** — Edit profile details, change password, manage saved addresses
 - [ ] **Transactional Emails** — "Order Confirmed" and "Shipped" emails (Resend/Postmark)
-- [ ] **Inventory Management** — Real-time stock checks, low stock alerts
+- [ ] **Taxes** - Correct taxes at checkout (Stripe)
 
 ### Polish (Growth & UX)
 - [ ] **Reviews & Ratings** — Customer feedback and social proof
