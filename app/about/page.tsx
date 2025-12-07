@@ -191,7 +191,7 @@ export default function AboutPage() {
               <Badge variant="destructive">Declined</Badge>
             </div>
             <p className="text-muted-foreground mt-3">
-              Use any future expiry date, any 3-digit CVC.
+              Use any future expiry date, any 3-digit CVC, and any random name/address/email/phone. Stripe only validates the card number in test mode.
             </p>
           </div>
         </CardContent>

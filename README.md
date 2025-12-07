@@ -65,7 +65,7 @@ A modern e-commerce storefront with physical and digital product support.
 | `4242 4242 4242 4242` | Success |
 | `4000 0000 0000 0002` | Declined |
 
-Use any future expiry, any 3-digit CVC.
+Use any future expiry, any 3-digit CVC, and any random name/address/email/phone. Stripe only validates the card number in test mode.
 
 ## License
 
