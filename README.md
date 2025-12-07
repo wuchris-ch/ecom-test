@@ -15,44 +15,48 @@ A modern e-commerce storefront with physical and digital product support.
 | [Tailwind CSS](https://tailwindcss.com) | Styling |
 | [Vercel](https://vercel.com) | Hosting |
 
-## Getting Started
+## What Works Today
 
-See the **[Setup Guide](SETUP.md)** for complete instructions on configuring Supabase, Stripe, and deployment.
+- Product catalog with physical + digital SKUs (Supabase-backed)
+- Shopping cart with localStorage persistence and Stripe Checkout handoff
+- Auth (Google OAuth + email/password) with guest checkout support
+- Checkout session creation (`/api/checkout`) with fixed shipping options and USD pricing
+- Webhook (`/api/stripe-webhook`) creates orders, order_items, digital download tokens, and decrements stock
+- Order history pages, account downloads, success page, cart drawer, and product pages
 
-```bash
-npm install
-cp .env.local.example .env.local
-# Fill in your API keys
-npm run dev
-```
+## What’s Still Missing for a Production Store
 
-## What's Built
+- Taxes: no tax lines are collected; Stripe Checkout is configured without tax/tax IDs.
+- Refunds/returns: no UI or automation; handle manually in the Stripe Dashboard today.
+- Admin: no product CRUD, price changes, inventory edits, or order fulfillment dashboard.
+- Shipping: no carrier rates, labels, tracking numbers, or fulfillment statuses (only static rates).
+- Emails: no order confirmation/shipping/refund emails; relies only on Stripe’s receipt emails.
+- Compliance: missing Terms, Privacy, Returns/Refunds pages; no cookie/analytics consent.
+- Security/ops: no webhook retry/backoff handling beyond Stripe defaults, no audit logs, no monitoring.
+- Analytics/SEO: no analytics or structured data; minimal metadata.
+- Profile: no saved addresses or profile edits; only basic account overview.
 
-- Product catalog (physical + digital)
-- Shopping cart with localStorage persistence
-- **Stripe Payments** (Complete integration)
-- **User Authentication** (Google OAuth + Email/Password)
-- Order history
-- Secure digital download links
-- Guest checkout
+## Refunds (current state)
 
-## TODO: Roadmap to Professional
+- Use the Stripe Dashboard to issue refunds and handle returns; the app does not expose a refund endpoint or UI.
+- Orders in Supabase are not auto-updated on refund/chargeback; you would need to add webhook handling for `charge.refunded`/`charge.dispute.*` to sync statuses and restock.
 
-### Fundamentals (Critical for Launch)
-- [ ] **Admin Dashboard** — Product management (CRUD), order fulfillment status, customer view
-- [ ] **Search & Discovery** — Search bar, sorting (price/date), advanced filtering
-- [ ] **Legal & Trust** — Terms of Service, Privacy Policy, Return Policy pages (required for payments)
-- [ ] **User Profile** — Edit profile details, change password, manage saved addresses
-- [ ] **Transactional Emails** — "Order Confirmed" and "Shipped" emails (Resend/Postmark)
-- [ ] **Taxes** - Correct taxes at checkout (Stripe)
+## Taxes (current state)
 
-### Polish (Growth & UX)
-- [ ] **Reviews & Ratings** — Customer feedback and social proof
-- [ ] **Wishlist** — Save items for later
-- [ ] **Analytics** — Google Analytics/PostHog, conversion tracking
-- [ ] **SEO** — Open Graph tags, structured data (JSON-LD) for Google Shopping
-- [ ] **Newsletter** — Email capture for marketing
-- [ ] **UI Refinements** — Better empty states, loading skeletons, mobile nav polish
+- Stripe Checkout is created without tax settings. All totals are untaxed.
+- To add tax quickly:
+  - Easiest: enable Stripe Tax, pass `automatic_tax: { enabled: true }` to the Checkout Session, and ensure you collect shipping/billing addresses.
+  - Manual (free): maintain a province/state tax table and add a `tax_cents` line in checkout calculations before creating the session. Show tax on cart/receipts and store it on the order.
+  - Canada specifics: collect country + province + postal code, register for GST/HST and any required PST/QST, and include your tax ID on receipts.
+
+## Near-Term Checklist
+
+- [ ] Add tax calculation (Stripe Tax or manual table) and store tax breakdown on orders.
+- [ ] Add refund/chargeback webhooks to sync order status and restock.
+- [ ] Add admin dashboard for products, prices, inventory, and order fulfillment/tracking.
+- [ ] Add transactional emails for order confirmed / shipped / refund.
+- [ ] Add legal pages (Terms, Privacy, Returns) and basic SEO/OG tags.
+- [ ] Add shipping status + tracking link fields and UI.
 
 ## Stripe Test Cards
 

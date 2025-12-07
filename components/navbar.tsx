@@ -55,6 +55,12 @@ export function Navbar() {
               >
                 Products
               </Link>
+              <Link
+                href="/about"
+                className="text-lg font-medium hover:text-primary transition-colors"
+              >
+                About
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>
@@ -80,6 +86,12 @@ export function Navbar() {
             className="text-sm font-medium hover:text-primary transition-colors"
           >
             Products
+          </Link>
+          <Link
+            href="/about"
+            className="text-sm font-medium hover:text-primary transition-colors"
+          >
+            About
           </Link>
         </nav>
 
