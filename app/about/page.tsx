@@ -137,7 +137,7 @@ export default function AboutPage() {
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-2">
             <p>Use the Stripe Dashboard to issue refunds and handle returns.</p>
-            <p>Orders in Supabase are not auto-updated on refund/chargeback—would need webhook handling for <code className="text-xs bg-muted px-1 py-0.5 rounded">charge.refunded</code> events.</p>
+            <p>Orders in Supabase are not auto-updated on refund/chargeback. Would need webhook handling for <code className="text-xs bg-muted px-1 py-0.5 rounded">charge.refunded</code> events.</p>
           </CardContent>
         </Card>
 
@@ -149,7 +149,7 @@ export default function AboutPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-2">
-            <p>Currently no tax settings—all totals are untaxed.</p>
+            <p>Currently no tax settings. All totals are untaxed.</p>
             <p><strong>Easiest fix:</strong> Enable Stripe Tax with <code className="text-xs bg-muted px-1 py-0.5 rounded">automatic_tax: {`{ enabled: true }`}</code></p>
             <p><strong>Free option:</strong> Manual province/state tax table.</p>
           </CardContent>
